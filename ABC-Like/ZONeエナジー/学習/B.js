@@ -24,6 +24,5 @@ function main(input) {
         console.log(0);
     }
 }
-
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
