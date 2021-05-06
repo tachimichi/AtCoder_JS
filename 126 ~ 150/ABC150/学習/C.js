@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 
+//*   ABC 150 C - Count Order
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
@@ -9,14 +9,47 @@ function main(input) {
     const p = input[1].split(' ').map((n) => parseInt(n, 10));
     const q = input[2].split(' ').map((n) => parseInt(n, 10));
     //* ソート（昇順）
-    let t = p.sort((a, b) => a - b);
+    let t = [...p].sort((a, b) => a - b);
     //* ----------------------------------------------------------
-    console.log(p);
-    console.log(q);
-    console.log(t);
+    console.log("p", p);
+    console.log("q", q);
+    console.log("t", t);
     console.log(t.length);
-
     //* ----------------------------------------------------------
+    let a = permutation(t, t.length);
+    console.log(a);
+    console.log(a[0]);
+    console.log(a[0].toString());
+
+    let arr = [];
+    for (let i = 0; i < a.length; i++) {
+        if(a[i].toString() == p.toString()) arr.push(i+1);
+        if(a[i].toString() == q.toString()) arr.push(i+1);
+    }
+    console.log(Math.abs(arr[0] - arr[1]));
 }
+
+function permutation(nums, k) {
+    let ans = [];
+    if (nums.length < k) return [];
+
+    if(k === 1) {
+        for (let i = 0; i < nums.length; i++) {
+            ans[i] = [nums[i]];
+        }
+    } else {
+        for (let i = 0; i < nums.length; i++) {
+            let parts = nums.slice(0);
+            parts.splice(i, 1)[0];
+            let row = permutation(parts, k - 1);
+            
+            for (let j = 0; j < row.length; j++) {
+                ans.push([nums[i]].concat(row[j]));
+            }
+        }
+    }
+    return ans;
+}
+
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
