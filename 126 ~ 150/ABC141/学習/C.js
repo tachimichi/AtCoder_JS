@@ -1,27 +1,29 @@
 // TODO
-//*   ABC 142 C - Go to School
+//*   ABC 141 C - Attack Survival
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    const a = input[1].split(' ').map(n => parseInt(n, 10));
-    //* ------------------------
+    const [n, k, q] = input[0].split(' ').map(n => parseInt(n, 10));
 
-    //* 逆順列
-    //* 順列 P1,P2,…,PN の逆順列 Q
-    //* for (int i = 0; i < N; ++i) Q[P[i]] = i
-    //* 
-    //* 逆順列 Q においては
-    //* i は P[i] 番目の要素である
+    let t = new Array(n).fill(k);
 
-    let t = new Array(n);
-    for(let i = 0; i < n; i++) {
-        t[a[i]-1] = i+1;
+    for( let i = 1; i <= q; i++) {
+        const x = parseInt(input[i], 10);
+        t[x-1] += 1;
     }
-    // console.log(a.join(' '));
-    console.log(t.join(' '));
+    console.log(t);
+
+    //* ------------------------
+    for(let i = 0; i < t.length; i++) {
+        if(t[i] > q) {
+            console.log('Yes');
+        } else {
+            console.log('No');
+        }
+    }
+
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
