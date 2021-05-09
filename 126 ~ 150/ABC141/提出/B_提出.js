@@ -1,18 +1,21 @@
 // TODO
-//*   ABC 142 B - Roller Coaster
+//*   ABC 141 B - Tap Dance
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const [n, k] = input[0].split(' ').map(n => parseInt(n, 10));
-    const t = input[1].split(' ').map(n => parseInt(n, 10));
+    const str = input.trim().split('');
+    // console.log(str);
     //* ------------------------
-    let count = 0;
-    for (let i = 0; i < t.length; i++) {
-        if(t[i] >= k) count++;
+    let ans = "Yes";
+    for(let i = 0; i < str.length; i++) {
+        if(i % 2 == 0) {
+            if(str[i] == "L") return console.log("No");
+        } else {
+            if(str[i] == "R") return console.log("No");
+        }
     }
-    console.log(count);
+    console.log(ans);
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
