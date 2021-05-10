@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 140 A - Password
+//*   ABC 139 A - Tenki
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
