@@ -1,30 +1,18 @@
 // TODO
-//*   ABC 133 B - Good Distance
+//*   ABC 132 B - Ordinary Number
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict'
     input = input.trim().split('\n');
-    const [n, d] = input[0].trim().split(' ').map(n => parseInt(n, 10));
-    let t = [];
-    for(let i = 1; i <= n; i++) {
-        const a = input[i].trim().split(' ').map(n => parseInt(n, 10));
-        t.push(a);
-    }
-    console.log(t);
+    const n = parseInt(input[0], 10);
+    const p = input[1].split(' ').map(n => parseInt(n, 10));
     
     let count = 0;
 
-    for(let i = 0; i < t.length-1; i++) {
-        for(let j = i+1; j < n; j++) {
-            let dis = 0;
-            for (let k = 0; k < d; k++) {
-                dis += Math.pow(Math.abs(t[i][k] - t[j][k]), 2);
-            }
-            dis = Math.sqrt(dis);
-            if(Number.isInteger(dis)) count++;
-            // console.log(dis);
-        }
+    for(let i = 1; i < n-1; i++) {
+        if(p[i-1] < p[i] && p[i] < p[i+1]) count++;
+        if(p[i-1] > p[i] && p[i] > p[i+1]) count++;
     }
     console.log(count);
 }
