@@ -5,41 +5,59 @@
 function main(input) {
     'use strict';
     const n = parseInt(input, 10);
+    let count = 0;
 
-    //* nが奇数の時の処理
-    if(n % 2 != 0) return console.log("奇数");
+    //* STEP1：
+    //* "("と")"の2種類の文字列から構成される ⇒ bit全探索
+    //* 長さnに対して、2^n通り
+    //* 
+    //* bit全探索(例：n = 3)
+    //* i = 0, 1, 2, ... , 2^n -1
+    //* 2進数：000, 001, 010, 011, 100, 101, 110, 111
+    //* カッコ列：(((, ((), ()(, ()), )((, )(), ))(, )))
+    //* 上からj桁目 = 0 の場合は"("、1の場合は")"
 
-    let str = "(";
-    let fc = 1;
-    let bc = 0;
-    
-    let ans = dfs(str, fc, bc, n);
-    console.log(ans);
-}
+    for(let i = 0; i < (1 << n); i++) {
+        let candidate = "";
+        for(let j = n-1; j >= 0; j--) {
+            //* メモ : 
+            //* (i & (1 << j)) = 0 というのは、i の j ビット目（2^j の位）が 0 であるための条件。
 
-function dfs(str, fc, bc, n) {
-    console.log(str, fc, bc, n);
-    
-    if(n == fc + bc) {
-        console.log("チェック", str, fc, bc, n);
-        if(fc == bc) {
-            console.log("OK", str, fc, bc, n);
-            return str;
-        } else {
-            console.log("NG", str, fc, bc, n);
+            if((i & (1 << j)) == 0) {
+                candidate += "(";
+            } else {
+                candidate += ")";
+            }
+        }
+        // console.log(i, i.toString(2));
+        // console.log("candidate", candidate);
+
+        //* STEP2：
+        //* ①"("と")" が同じ数である
+        //* ②全てのiについて、左からi文字目までの時点で
+        //*    "("の数 >= ")"の数
+
+        let t = hantei(candidate);
+        // console.log(t);
+        if(t == true) {
+            count++;
+            console.log(candidate);
         }
     }
-    console.log(str, fc, bc, n);
+    // console.log(count);
+}
 
-    if(fc <= bc ) {
-        console.log('aaaaaaaaaaaa');
-        str = dfs(str+"(", fc+1, bc, n);
-    } else {
-        console.log('bbbbbbbbbbb');
-        str = dfs(str+")", fc, bc+1, n);
+function hantei(str) {
+    let dep = 0;
+    for(let i = 0; i < str.length; i++) {
+        if(str[i] == "(") dep++;
+        if(str[i] == ")") dep--;
+        if(dep < 0) return false;
     }
-    
-    return str;
+
+    if(dep == 0) return true;
+    //* dep > 0 の時
+    return false;
 }
 
 
