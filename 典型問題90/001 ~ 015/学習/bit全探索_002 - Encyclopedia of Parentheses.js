@@ -56,7 +56,9 @@ function hantei(str) {
         if(str[i] == ")") dep--;
         if(dep < 0) return false;
     }
+    
     if(dep == 0) return true;
+    //* dep > 0 の時
     return false;
 }
 
