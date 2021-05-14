@@ -11,23 +11,20 @@ function main(input) {
     const a = input[1].split(' ').map(n => parseInt(n, 10));
     const b = input[2].split(' ').map(n => parseInt(n, 10));
 
-    let count = 0;
+
     let sum = 0;
     for(let i = 0; i < n; i++) {
-        sum += Math.abs(b[i] - a[i]);
+        sum += Math.abs(a[i] - b[i]);
     }
+
+    //* t （余り）が偶数かどうか判定
     let t = k - sum;
-    if(t < 0) {
-        console.log("No");
-    } else if(t % 2 == 0) {
+    if(t >= 0 && t % 2== 0) {
         console.log("Yes");
     } else {
         console.log("No");
     }
 }
-
-
-
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
