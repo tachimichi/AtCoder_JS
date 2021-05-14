@@ -17,13 +17,6 @@ function main(input) {
     //* カッコ列：(((, ((), ()(, ()), )((, )(), ))(, )))
     //* 上からj桁目 = 0 の場合は"("、1の場合は")"
 
-    //* STEP2：
-    //* ①"("と")" が同じ数である
-    //* ②全てのiについて、左からi文字目までの時点で
-    //*    "("の数 >= ")"の数
-    //* 
-    //* 
-
     for(let i = 0; i < (1 << n); i++) {
         let candidate = "";
         for(let j = n-1; j >= 0; j--) {
@@ -38,6 +31,11 @@ function main(input) {
         }
         // console.log(i, i.toString(2));
         // console.log("candidate", candidate);
+
+        //* STEP2：
+        //* ①"("と")" が同じ数である
+        //* ②全てのiについて、左からi文字目までの時点で
+        //*    "("の数 >= ")"の数
 
         let t = hantei(candidate);
         // console.log(t);
@@ -56,7 +54,7 @@ function hantei(str) {
         if(str[i] == ")") dep--;
         if(dep < 0) return false;
     }
-    
+
     if(dep == 0) return true;
     //* dep > 0 の時
     return false;
