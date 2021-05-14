@@ -1,23 +1,34 @@
 // TODO
-//*   ABC 196 C - Doubled
+//*   ABC 197 C - ORXOR
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const n = parseInt(input, 10);
-    //* ----------------------
-    let ans = 0;
-    let x = 1;
-    while( f(x) <= n) {
-        ans++;
-        x++;
+    input = input.trim().split('\n');
+    const n = parseInt(input[0], 10);
+    let a = input[1].split(' ').map(n => parseInt(n, 10));
+
+    let min = (1 << 30);
+    // console.log(Math.pow(2, 30));
+    // console.log(min);
+
+    for(let i = 0; i < (1 << (n-1)); i++) {
+        let now = 0;
+        let t = 0;
+        for(let j = 0; j < n; j++) {
+            t |= a[j];
+            if (i & (1 << j)) {
+                now ^= t;
+                t = 0;
+            }
+        }
+        now ^= t;
+        min = Math.min(min, now);
     }
-    console.log(ans);
+    console.log(min);
 }
-function f(x) {
-    let s = String(x);
-    return s + s;
-}
+
+
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
