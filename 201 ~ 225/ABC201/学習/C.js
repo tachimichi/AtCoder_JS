@@ -20,7 +20,7 @@ function main(input) {
     let count = 0;
     for(let i = 0; i <= 9999; i++) {
         
-        let arr = new Array(10).fill(0);
+        let arr = new Array(10).fill(false);
         str = i.toString();
         if(i <= 999) {
             while(str.length < 4) {
@@ -31,24 +31,21 @@ function main(input) {
         }
         
         for(let j = 0; j < 4; j++) {
-            let flg = true;
-            if(t[str[j]] == "x") {
-                flg = false;
-                break;
-            } else if(t[str[j]] == "o") {
-                arr[str[j]]++;
-            }
-            let max = 0;
-            let count2 = 0;
-            max = Math.max(...arr);
-            // console.log(max);
-            for(let k = 0; k < 10; k++) {
-                if(arr[k] != 0) count2++;
-            }
-            if(max != 0 && count2 == a && a >= max && flg == true) {
-                count++;
-            }
+            // console.log(str);
+            arr[str%10] = true;
+            str /= 10;
+            // console.log(str);
+            // console.log("-------");
         }
+
+        let flg = true;
+        for(let j = 0; j < 10; j++) {
+            if(t[j] == "o" && !arr[j]) flg = false;
+            if(t[j] == "x" && arr[j]) flg = false;
+        }
+        // console.log(count);
+        count += flg;
+        // console.log(count);
 
     }
     console.log(count);
