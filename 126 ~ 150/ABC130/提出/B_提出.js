@@ -1,33 +1,22 @@
 // TODO
-//*   ABC 131 B - Bite Eating
+//*   ABC 130 B - Bounding
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict'
-    const [n, l] = input.trim().split(' ').map(n => parseInt(n, 10));
-
-    let max = 0;
+    input = input.trim().split('\n');
+    const [n, x] = input[0].trim().split(' ').map(n => parseInt(n, 10));
+    const l = input[1].trim().split(' ').map(n => parseInt(n, 10));
+    
+    let sum = 0;
     let count = 1;
-    let t = [];
-    for(let i = l; count <= n; i++) {
-        max += i;
-        count++;
-        t.push(i);
+    for(let i = 0; i < n; i++) {
+        sum += l[i];
+        if(x >= sum) count++;
     }
-
-    let min = 201;
-    let ans = 0;
-    for (let i = 0; i < t.length; i++) {
-        if(min > Math.abs(t[i])) {
-            min = Math.min(min, Math.abs(t[i]));
-            ans = t[i];
-        }
-    }
-
-    console.log(max - ans);
-
-
+    console.log(count);
 }
+
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));

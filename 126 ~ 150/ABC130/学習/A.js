@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 131 A - Security
+//*   ABC 130 A - Rounding
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
