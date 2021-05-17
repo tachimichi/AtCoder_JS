@@ -1,28 +1,32 @@
 // TODO
-//*   ABC 134 C - Exception Handling
+//*   ABC 133 C - Remainder Minimization 2019
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    //* shift()で先頭を消す
-    //* 行に対して、map処理
-    input.shift();
-    let a = input.map(n => parseInt(n, 10));
+    const [l, r] = input.trim().split(' ').map(n => BigInt(n));
 
-    let t = [...a];
-    t.sort((a, b) => b-a);
-
-    for(let i = 0; i < a.length; i++) {
-        //* a[i]が最大値かどうか判定
-        if(a[i] != t[0]) {
-            console.log(t[0]);
-        } else {
-            console.log(t[1]);
+    let min = 2018n;
+    for(let i = l; i < r; i++) {
+        for(let j = i+1n; j <= r; j++) {
+            min = Math.min(min.toString(), ((i*j) % 2019n).toString())
+            if(min == 0n) break;
         }
+        if(min == 0n) break;
     }
+    console.log(min.toString());
 }
 
+
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
-main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
+try {
+    main(require('fs').readFileSync('/dev/stdin', 'utf8'));
+} catch (error1) {
+    try {
+        main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
+    } catch (error2) {
+        console.log('error2', error2);
+        console.log('----------------------------');
+        console.log('error1', error1);
+    }
+}
