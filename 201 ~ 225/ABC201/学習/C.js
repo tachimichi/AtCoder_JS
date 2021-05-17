@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 106 C - To Infinity
+//*   ABC 201 C - Secret Number
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
@@ -14,7 +14,7 @@ function main(input) {
         if(t[i] == "x") c++;
     }
     if(a > 4 || c == 10) return console.log(0);
-    console.log(t);
+    // console.log(t);
     
     let str = "";
     let count = 0;
@@ -29,14 +29,16 @@ function main(input) {
             }
             // console.log(str);
         }
+        // console.log(str);
         
         for(let j = 0; j < 4; j++) {
             // console.log(str);
-            arr[str%10] = true;
+            arr[Math.floor(str%10)] = true;
             str /= 10;
             // console.log(str);
             // console.log("-------");
         }
+        // console.log(arr);
 
         let flg = true;
         for(let j = 0; j < 10; j++) {

@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 201 
+//*   ABC 201 A - Tiny Arithmetic Sequence
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

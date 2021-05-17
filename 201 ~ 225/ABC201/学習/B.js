@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 106 B - 105
+//*   ABC 201 B - Do you know the second highest mountain?
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
