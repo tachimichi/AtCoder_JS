@@ -1,27 +1,34 @@
 // TODO
-//*   ABC 132 C - Divide the Problems
+//*   ABC 131 C - Anti-Division
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    let d = input[1].split(' ').map(n => parseInt(n, 10));
+    const [a, b, c, d] = input.trim().split(' ').map(n => BigInt(n));
 
-    d.sort((a,b) => a-b);
+    //* 前提：区間[x ~ y]の整数の個数は、 y - x +1
+    //* CかDで割り切れる = Cで割り切れる + Dで割り切れる - CでもDでも割り切れる
 
-    //* 考え方：難易度
-    //* ソートして、昇順に並び替える
-    //* 後半の1番目と、前半の最後の数字を比較（引き算）
-    //* その幅の値が難易度の動的幅
-    //* 
+    function diff(t, c, d) {
+        let x = t;
+        x = x - ((t/c) + (t/d));
+        x += t / lcm(c, d);
+        return x;
+    }
+    let sum = diff(b, c, d) - diff((a-1n), c, d);
+    // console.log(diff(b, c, d));
+    // console.log(diff((a-1n), c, d));
+    console.log(sum.toString());
+}
 
-    // console.log(d);
-    // console.log(d[d.length / 2]);
-    // console.log(d[d.length / 2 -1]);
-    let ans = d[d.length / 2] - d[d.length / 2 -1];
-    console.log(ans);
+//* 2つの数字a, bの最大公約数を求める
+function gcd(a, b) {
+    if (b === 0n) return a;
+    return gcd(b, a % b)
+}
 
+function lcm(a, b) {
+    return a * b / gcd(a, b);
 }
 
 
