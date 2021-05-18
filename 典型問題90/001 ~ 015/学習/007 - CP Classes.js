@@ -13,6 +13,9 @@ function main(input) {
     // console.log(a);
     // console.log(a.length);
 
+    //* 要素の検索はソートして二分探索
+    //* 使い道：一致する要素や条件が近い要素
+
     for(let i = 3; i < 3+q; i++) {
         let abs = 10e9;
         let t = parseInt(input[i], 10);
@@ -27,20 +30,20 @@ function main(input) {
             let middle = Math.floor((left+right)/2);
 
             if(t == a[middle]) {
-                abs = 0;
+                index = Math.abs(a[middle] - t);
                 break;
             } else if(a[middle] < t) {
+                index = Math.abs(a[middle] - t);
                 left = middle + 1;
-                abs = Math.min(abs, Math.abs(a[middle] - t));
             } else {
+                index = Math.abs(a[middle] - t);
                 right = middle - 1;
-                abs = Math.min(abs, Math.abs(a[middle] - t));
             }
+            abs = Math.min(abs, index);
         }
+        abs = Math.min(abs, index);
         console.log(abs);
     }
-
-
 }
 
 
