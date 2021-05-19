@@ -10,9 +10,11 @@ function main(input) {
     const a = input[1].split(' ').map(n => parseInt(n, 10));
     const b = input[2].split(' ').map(n => parseInt(n, 10));
 
+    //* ソート
     a.sort((a, b) => a-b);
     b.sort((a, b) => a-b);
-
+    //* 貪欲法
+    
     let sum = 0;
     for(let i = 0; i < a.length; i++) {
         sum += Math.abs(a[i] - b[i]);
