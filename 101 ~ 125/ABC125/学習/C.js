@@ -1,25 +1,15 @@
 // TODO
-//*   ABC 126 C - Dice and Coin
+//*   ABC 125 C - GCD on Blackboard
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const [n, k] = input.trim().split(' ').map(n => parseInt(n, 10));
+    input = input.trim().split('\n');
+    const n = parseInt(input[0], 10);
+    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
 
-    let t = 0;
-    for(let i = 1;  i <= n; i++) {
-        let kakuritsu = 1/n;
-        let now = i;
-        while(now < k) {
-            now *= 2;
-            kakuritsu /= 2;
-            // console.log(now);
-        }
-        console.log(kakuritsu);
-        t += kakuritsu;
-    }
-    console.log(t);
-
+    let max = 0;
+    
 }
 
 
