@@ -1,25 +1,37 @@
 // TODO
-//*   ABC 126 C - Dice and Coin
+//*   ABC 124 C - Coloring Colorfully
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const [n, k] = input.trim().split(' ').map(n => parseInt(n, 10));
+    const s = input.trim().split('').map(n => parseInt(n, 10));
+    const n = s.length;
+    const a = [];
+    const b = [];
 
-    let t = 0;
-    for(let i = 1;  i <= n; i++) {
-        let kakuritsu = 1/n;
-        let now = i;
-        while(now < k) {
-            now *= 2;
-            kakuritsu /= 2;
-            // console.log(now);
+    for(let i = 0; i < n; i++) {
+        if(i % 2 == 0) {
+            a.push(0);
+            b.push(1);
+        } else {
+            a.push(1);
+            b.push(0);
         }
-        // console.log(kakuritsu);
-        t += kakuritsu;
     }
-    console.log(t);
+    // console.log(s);
+    // console.log(a, b);
 
+    let countA = 0;
+    let countB = 0;
+    
+    for(let i = 0; i < n; i++) {
+        if(s[i] != a[i]) {
+            countA++;
+        } else {
+            countB++
+        }
+    }
+    console.log(Math.min(countA, countB));
 }
 
 
