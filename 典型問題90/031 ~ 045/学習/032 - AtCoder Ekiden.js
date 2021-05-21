@@ -14,11 +14,14 @@ function main(input) {
     console.log(a);
     const m = parseInt(input[n+1], 10);
     let x = [];
+    let y = [];
     for(let i = n+2; i <= n+1+m; i++) {
-        let t = input[i].split(' ').map(n => parseInt(n, 10));
-        x.push(t);
+        let [a, b] = input[i].split(' ').map(n => parseInt(n, 10));
+        x.push(a);
+        y.push(b);
     }
     console.log(x);
+    console.log(y);
     //* ----------------------------------
     let kenaku = [];
     for(let i = 0; i < n; i++) {
@@ -29,9 +32,36 @@ function main(input) {
     //* ----------------------------------
 
     for (let i = 0; i < m; i++) {
-        kenyaku[x[]]
+        kenaku[x[i]-1][y[i]-1] = true;
+        kenaku[y[i]-1][x[i]-1] = true;
     }
+    console.log(kenaku);
+    
+    const perm = permutation(kenaku, kenaku.length);
+    //* ------------------------------------------------------
+    let ans = (1 << 30);
+    console.log(ans);
+    do {
+        let flag = true;
+        let sum = 0;
+        for(let i = 0; i < n; i++) {
+            if(kenaku[i][i+1] == true) flag = false;
+        }
+        // console.log(kenaku);
 
+        for(let i = 0; i < n; i++) {
+            sum += a[i][i+1];
+        }
+        console.log(sum);
+
+        if(flag == true) ans = Math.min(ans, sum);
+        
+    } while (perm);
+    
+    console.log(permutation(kenaku, kenaku.length));
+
+    if(ans == (1 << 30)) ans = -1;
+    console.log(ans);
 
 
 }
@@ -42,7 +72,6 @@ function permutation(nums, k) {
     // console.log('---------------------------');
     let ans = [];
     // console.log(`初期ans：${ans}`);
-    //* 
     if(nums.length < k) return [];
     if(k === 1) {
         for(let i = 0; i < nums.length; i++) {
