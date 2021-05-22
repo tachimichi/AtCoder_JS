@@ -4,7 +4,7 @@
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
+    input = input.trim().split('\n')
     let sum = 0;
 
     let saigo = 0;
@@ -25,8 +25,6 @@ function main(input) {
             }
         }
     }
-
-
 
 }
 
