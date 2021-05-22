@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 201 C - Secret Number
+//*   ABC 202 C - Made Up
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

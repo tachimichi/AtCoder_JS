@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 202
+//*   ABC 202 A - Three Dice
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
