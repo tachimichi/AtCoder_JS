@@ -1,60 +1,27 @@
 // TODO
 //*   ABC 201 B - Do you know the second highest mountain?
 
+
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    let a = [];
-
-    for(let i = 1; i  <= n; i++) {
-        let  [x, y] = input[i].trim().split(' ');
-        y = parseInt(y, 10);
-        //* 配列を複数同時にpushできる
-        a.push([x, y]);
+    input = input.trim().split('').reverse();
+    // console.log(input);
+    let ans = [];
+    for(let i = 0; i < input.length; i++) {
+        if(input[i] == "6") {
+            ans.push("9");
+            continue;
+        }
+        if(input[i] == "9") {
+            ans.push("6");
+            continue;
+        }
+        ans.push(input[i]);
     }
-    console.log(a);
+    console.log(ans.join(''));
 
-    //* 比較対象を明示的に行う
-    a.sort((a,b) => a[1] - b[1]);
-    console.log(a);
-    //* 最後からn番目を出力したい場合
-    console.log(a[a.length-2][0]);
 }
-
-// function main(input) {
-//     'use strict';
-//     input = input.trim().split('\n');
-//     const n = parseInt(input[0], 10);
-//     let s = [];
-//     let t = [];
-//     let a = [];
-//     let b = [];
-//     let x = "";
-//     let y = 0;
-
-//     for(let i = 1; i  <= n; i++) {
-//         [x, y] = input[i].trim().split(' ');
-//         y = parseInt(y, 10);
-//         s.push(x);
-//         t.push(y);
-//         a.push(x);
-//         b.push(y);
-//     }
-//     // console.log(s, t);
-
-//     t.sort((a,b) => a-b);
-//     // console.log(t);
-//     // console.log(t[t.length-2]);
-//     let ans = t[t.length-2];
-//     for(let i = 0; i < b.length; i++) {
-//         if(b[i] == ans) {
-//             console.log(a[i]);
-//         }
-//     }
-// }
-
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
