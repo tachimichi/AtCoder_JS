@@ -5,27 +5,21 @@
 function main(input) {
     'use strict';
     input = input.trim().split('\n')
+    //* ----------------
     let sum = 0;
-
-    let saigo = 0;
-    let t = [];
-    let min = 11;
+    let longest = 0;
     for(let i = 0; i < 5; i++) {
         let a = parseInt(input[i], 10);
-        t.push(a);
-        let amari = a % 10;
-        if(amari == 0) {
-            continue;
-        } else {
-            if(amari < min) {
-                min = Math.min(min, amari);
-                saigo = a;
-            } else {
-                sum += a;
-            }
-        }
+        //* 切り上げの確認
+        let ceil = Math.ceil(a / 10) *10;
+        sum += ceil;
+        //* 差が最大のを記録する
+        if(ceil - a > longest) {
+            longest = ceil - a;
+        } 
     }
-
+    //* 最終的に差が最大のものを引く
+    console.log(sum - longest);
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）

@@ -1,26 +1,27 @@
 // TODO
-//*   ABC 124 B - Great Ocean View
+//*   ABC 123 B - Five Dishes
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    const h = input[1].split(' ').map(n => parseInt(n, 10));
-
-    let count = 0;
-    for(let i = 0; i < n; i++) {
-        let max = 0;;
-        let t = h[i];
-        for(let j = 0; j < i; j++) {
-            max = Math.max(max, h[j]);
-        }
-        if(t >= max) count++;
-        // console.log(t);
-        // console.log(max);
+    input = input.trim().split('\n')
+    //* ----------------
+    let sum = 0;
+    let longest = 0;
+    for(let i = 0; i < 5; i++) {
+        let a = parseInt(input[i], 10);
+        //* 切り上げの確認
+        let ceil = Math.ceil(a / 10) *10;
+        sum += ceil;
+        //* 差が最大のを記録する
+        if(ceil - a > longest) {
+            longest = ceil - a;
+        } 
     }
-    console.log(count);
+    //* 最終的に差が最大のものを引く
+    console.log(sum - longest);
 }
+
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
