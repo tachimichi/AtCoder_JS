@@ -1,38 +1,21 @@
 // TODO
-//*   ABC 124 C - Coloring Colorfully
+//*   ABC 123 C - Five Transportations
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const s = input.trim().split('').map(n => parseInt(n, 10));
-    const n = s.length;
-    const a = [];
-    const b = [];
+    const [n, a, b, c, d, e] = input.trim().split('\n').map(n => parseInt(n, 10));
 
-    for(let i = 0; i < n; i++) {
-        if(i % 2 == 0) {
-            a.push(0);
-            b.push(1);
-        } else {
-            a.push(1);
-            b.push(0);
-        }
-    }
-    // console.log(s);
-    // console.log(a, b);
-
-    let countA = 0;
-    let countB = 0;
-    
-    for(let i = 0; i < n; i++) {
-        if(s[i] != a[i]) {
-            countA++;
-        } else {
-            countB++
-        }
-    }
-    console.log(Math.min(countA, countB));
+    //* 解法：
+    //* もっとも「きつい」交通機関を考える
+    //* Math.ceil(n人/最小キャパ)+4分
+    //* ⇒Math.ceil(n人/最小キャパ)は、全員が最小キャパを乗るための回数
+    //* ⇒+4分は最小キャパ以外の乗る時間
+    //* 
+    let ans = Math.ceil(n/Math.min(a,b,c,d,e))+4;
+    console.log(ans);
 }
+
 
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
