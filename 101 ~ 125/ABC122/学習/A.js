@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 123 A - Five Antennas
+//*   ABC 122 A - Double Helix
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
