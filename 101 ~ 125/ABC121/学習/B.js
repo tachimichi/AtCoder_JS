@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 122 B - Can you solve this?
+//*   ABC 121 B - ATCoder
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

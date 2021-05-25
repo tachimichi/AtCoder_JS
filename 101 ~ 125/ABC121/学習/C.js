@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 122 C - Energy Drink Collector
+//*   ABC 121 C - Energy Drink Collector
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
