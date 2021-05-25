@@ -14,8 +14,12 @@ function main(input) {
         //* 2. 部分点を取得した問題で、満点を得る(a-b点)
         t.push(b, a-b);
     }
+    //* ポイント：
+    //* 1つの問題に対して、b>a-bが保証されている
+    //* ⇒部分点を経由せずに直接、満点を取得することは無い
+
     //* 降順
-    t.sort((a,b) => b-a)
+    t.sort((a,b) => b-a);
     // console.log(t);
 
     let ans = 0;
