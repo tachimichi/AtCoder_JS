@@ -4,10 +4,13 @@
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const [h, w] = input[0].trim().split(' ').map(n => parseInt(n, 10));
-    const [a, b] = input[1].trim().split(' ').map(n => parseInt(n, 10));
-    console.log((h-a) * (w-b));
+    const [a, b, c] = input.trim().split(' ').map(n => parseInt(n, 10));
+    let count = Math.floor(b/a);
+    if(count >= c) {
+        console.log(c);
+    } else {
+        console.log(count);
+    }
 
 }
 
