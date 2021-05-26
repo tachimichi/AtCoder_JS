@@ -11,9 +11,6 @@ function main(input) {
     a.sort((a, b) => a - b);
     //* 整数の足し引き⇒最大公約数を疑う
     //* O(N + logA1) 
-    //* 
-    //* 
-    //* 
     let max = a[0];
     for (let i = 0; i < n; i++) {
         max = gcd(max, a[i]);

@@ -9,11 +9,11 @@ function main(input) {
     const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
 
     a.sort((a, b) => a - b);
-    let max = a[a.length - 1];
-    for (let i = 0; i < a.length - 1; i++) {
-        for (let j = i + 1; j < a.length; j++) {
-            max = Math.min(max, gcd(a[i], a[j]));
-        }
+    //* 整数の足し引き⇒最大公約数を疑う
+    //* O(N + logA1) 
+    let max = a[0];
+    for (let i = 0; i < n; i++) {
+        max = gcd(max, a[i]);
     }
     console.log(max);
 }
