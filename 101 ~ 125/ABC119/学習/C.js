@@ -8,14 +8,14 @@ function main(input) {
 
     let count_0 = 0;
     let count_1 = 0;
-    for(let i = 0; i < input.length; i++) {
-        if(input[i] == 0) {
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] == 0) {
             count_0++;
         } else {
             count_1++;
         }
     }
-    console.log(2* Math.min(count_0, count_1));
+    console.log(2 * Math.min(count_0, count_1));
 }
 
 
