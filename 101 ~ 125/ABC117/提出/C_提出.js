@@ -1,29 +1,30 @@
 // TODO
-//*   ABC 118 C - Monsters Battle Royale
+//*   ABC 117 C - Streamline
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
+    const [n, m] = input[0].trim().split(' ').map(n => parseInt(n, 10));
     const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
 
     a.sort((a, b) => a - b);
-    //* 整数の足し引き⇒最大公約数を疑う
-    //* O(N + logA1) 
-    let max = a[0];
-    for (let i = 0; i < n; i++) {
-        max = gcd(max, a[i]);
+
+    let t = [];
+    for (let i = 0; i < m - 1; i++) {
+        let x = a[i + 1] - a[i];
+        t.push(x);
     }
-    console.log(max);
-}
+    t.sort((a, b) => b - a);
 
-//* 2つの数字a, bの最大公約数を求める
-function gcd(a, b) {
-    if (b === 0) return a;
-    return gcd(b, a % b)
+    let ans = 0;
+    //* 始点：区間が大きい値をn-1飛ばす。
+    //* 移動最小化：m-n個の区間を最小の値で選択
+    for (let i = n - 1; i < t.length; i++) {
+        ans += t[i];
+    }
+    console.log(ans);
 }
-
 
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
