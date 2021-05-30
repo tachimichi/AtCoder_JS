@@ -1,16 +1,21 @@
 // TODO
-//*   ABC 116 A - Right Triangle
+//*   ABC 115 A - Christmas Eve Eve Eve
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     "use strict";
-    const a = input.trim().split(' ').map(n => parseInt(n, 10));
-    a.sort((a, b) => a - b);
+    const d = parseInt(input, 10);
 
-    console.log(a[0] * a[1] / 2);
+    if(d == 25) {
+        console.log("Christmas");
+    } else if(d == 24) {
+        console.log("Christmas Eve");
+    } else if(d == 23) {
+        console.log("Christmas Eve Eve");
+    } else {
+        console.log("Christmas Eve Eve Eve");
+    }
 }
-
-
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
