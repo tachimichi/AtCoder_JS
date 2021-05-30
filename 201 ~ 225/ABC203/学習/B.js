@@ -1,0 +1,20 @@
+// TODO
+//*   ABC 203
+
+// 関数mainに標準入力をinputとして受け取る
+function main(input) {
+    'use strict';
+    // input = input.trim().split('\n');
+    const [n, k] = input.trim().split(' ').map(n => parseInt(n, 10));
+
+    let sum = 0;
+    for(let i = 1; i <= n; i++) {
+        for(let j = 1; j <= k; j++) {
+            sum += parseInt(i.toString() + "0" + j.toString(), 10);
+        }
+    }
+    console.log(sum);
+
+}
+//*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
+main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
