@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 203
+//*   ABC 203 B - AtCoder Condominium
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
@@ -8,8 +8,8 @@ function main(input) {
     const [n, k] = input.trim().split(' ').map(n => parseInt(n, 10));
 
     let sum = 0;
-    for(let i = 1; i <= n; i++) {
-        for(let j = 1; j <= k; j++) {
+    for (let i = 1; i <= n; i++) {
+        for (let j = 1; j <= k; j++) {
             sum += parseInt(i.toString() + "0" + j.toString(), 10);
         }
     }
