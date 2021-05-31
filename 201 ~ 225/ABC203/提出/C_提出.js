@@ -1,60 +1,52 @@
 // TODO
-//*   ABC 203
+//*   ABC 203 C - Friends and Travel costs
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    let [n, k] = input[0].trim().split(' ').map(n => BigInt(n));
-    
-    let m = new Array(1001).fill(0n);
-    let map = new Map();
-    // console.log(m);
+    let [n, k] = input[0].trim().split(' ').map(n => parseInt(n, 10));
 
-    // console.log(Math.pow(10, 100));
-
-    let t = [];
-    for(let i = 1; i <= n; i++) {
-        const [a, b] = input[i].trim().split(' ').map(n => BigInt(n));
-        // m[a] += b;
-        t.push([a,b]);
+    let arr = [];
+    for (let i = 1; i <= n; i++) {
+        const [a, b] = input[i].trim().split(' ').map(n => parseInt(n, 10));
+        arr.push([a, b]);
     }
-    t.sort((a,b) => a[0].toString() - b[0].toString());
-    // console.log(t);
-    // console.log(m[1000]);
+    // console.log(arr);
+    arr.sort((a, b) => a[0] - b[0]);
+    // console.log(arr);
 
-    let ans = 0n;
-    let count = 0n;
-    let isSafe = 0n;
-    for(let i = 0; i < n; i++) {
-        // console.log(t[i][0]);
-        isSafe = k - t[i][0];
-        if(isSafe >= 0) {
-            for(let j = i; j < n; j++) {
-                if(t[i][0] == t[j][0]) {
-                    k += t[j][1];
-                }
-            }
+    //* 前提：Bigintを使用するのは、10^15以上である
+    //* しかし、制約上、最大値は
+    //* k <= 10^9, b <=10^9, n <= 2*10^5
+    //* 2*10^5(n) * 10^9(b) + 10^9(k) <= 10^15
+    //* ⇒64bit整数で収まる（BigIntは使用しない）
+
+    //* 解法：
+    //* k >= 村[i]である場合
+    //*     k += 金[i]円
+    //* k < 村[i] である場合
+    //*     終了
+
+    console.log("k", k);
+    for (let i = 0; i < n; i++) {
+        if (arr[i][0] <= k) {
+            k += arr[i][1];
         } else {
-            // console.log(isSafe);
-            // console.log((k-isSafe).toString());
-            return console.log(k.toString());
+            break;
         }
+        console.log("k", k);
     }
-    // console.log(isSafe);
-    if(k > 1000){
-        console.log(k.toString());
-    } else {
-        console.log((k-isSafe).toString());
-    }
+    console.log(k);
 
 }
+
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
 } catch (error1) {
     try {
-    main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
+        main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
     } catch (error2) {
         console.log('error2', error2);
         console.log('----------------------------');
