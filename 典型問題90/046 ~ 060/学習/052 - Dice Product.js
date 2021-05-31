@@ -20,6 +20,9 @@ function main(input) {
     // console.log(t);
     // console.log(sum);
 
+    //* ----------------------------------
+    //* 解法１：各さいころの総和×全部
+    //* 計算量：O(2N)、実行時間：約230ms
     //* 各さいころの和を求める
     let sums = [];
     for (let i = 0; i < t.length; i++) {
@@ -32,6 +35,20 @@ function main(input) {
     let ans = sums.reduce((a, b) => a * b);
     // console.log(ans);
     console.log((ans % mod).toString());
+
+    //* ----------------------------------
+    //* 解法２：因数分解
+    //* 計算量：O(N)、実行時間：約60ms
+    let ans2 = 1n;
+    for (let i = 0; i < n; i++) {
+        let p = t[i][0] + t[i][1] + t[i][2] + t[i][3] + t[i][4] + t[i][5];
+        // console.log(p);
+        ans2 *= p;
+        ans2 %= mod;
+    }
+    console.log(ans2.toString());
+    // console.log((ans2 % mod).toString());
+
 
 }
 
