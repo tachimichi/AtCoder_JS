@@ -1,29 +1,27 @@
 // TODO
-//*   ABC 116 B - Collatz Problem
+//*   ABC 115 B - Christmas Eve Eve
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const n = parseInt(input, 10);
-    if (n == 1 || n == 2 || n == 4) return console.log(4);
-
-    let count = 1;
-    let x = n;
-    while (x != 4) {
-        x = func(x);
-        count++;
-        // console.log(x);
+    input = input.trim().split('\n');
+    const n = parseInt(input[0], 10);
+    let t = [];
+    for (let i = 1; i <= n; i++) {
+        const p = parseInt(input[i], 10);
+        t.push(p);
     }
-    console.log(count + 3);
+    t.sort((a, b) => b - a);
+    // console.log(t);
+    let ans = t[0] / 2;
+    for (let i = 1; i < t.length; i++) {
+        ans += t[i];
+    }
+    console.log(ans);
+
 }
 
-function func(x) {
-    if (x % 2 == 0) {
-        return x / 2;
-    } else {
-        return x * 3 + 1;
-    }
-}
+
 
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
