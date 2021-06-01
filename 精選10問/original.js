@@ -1,5 +1,5 @@
 // 前提：JSは大文字小文字を区別するため気を付ける。
-(function() { //即時関数
+(function () { //即時関数
     'use strict';
     { // 基本
         // ターミナルで実行するには node タブキー
@@ -105,7 +105,7 @@
         //     console.log(`${hp} HP Left`);
         //     hp -= 33;
         // }
-        
+
         // let hp = -50;
         // // do {} while(条件式)
         // // ⇒先に処理を行ってから、条件式を評価する
@@ -200,5 +200,17 @@
         // 別ファイルではなく、同じファイルのように処理されるので
         // 注意が必要。
         // ⇒だから毎回、{ブロック}で囲む
+    }
+    {
+        const a = [-10, 3, 1, 5, -100, 100, 6, 14, 999]
+        console.log("配列の長さ", a.length);
+        //* 配列の範囲指定
+        console.log(a[a.length - 1]); //* 配列ではないデータ
+        console.log(a.slice(-1)); //* 配列としてデータが返される
+        console.log(...a.slice(-1)); //* 配列ではないデータ
+        console.log(a.slice(a.length / 2)); //* 半分（中心も含む）
+        console.log(a.slice(a.length / 2 + 1)); //* 半分（中心含まず）
+        console.log(...a.slice(a.length / 2)); //* 配列ではない
+
     }
 })();
