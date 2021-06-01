@@ -1,0 +1,19 @@
+// TODO
+//*   ABC 111 B - AtCoder Beginner Contest 111
+
+// 関数mainに標準入力をinputとして受け取る
+function main(input) {
+    'use strict';
+    const n = parseInt(input, 10);
+    for (let i = 0; i < 10; i++) {
+        if (n <= i * 100 + i * 10 + i) {
+            return console.log(i * 100 + i * 10 + i);
+        }
+    }
+}
+
+
+
+
+//*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
+main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
