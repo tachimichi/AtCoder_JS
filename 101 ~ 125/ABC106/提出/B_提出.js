@@ -7,19 +7,17 @@ function main(input) {
     const n = parseInt(input, 10);
     //* ------------------------------------------------------
     let ans = 0;
-    
+
     //* 1以上N以下の奇数のうち, 正の約数を8個持つ
     //* 全探索
-    for(let i =1; i <= n; i += 2) {
+    for (let i = 1; i <= n; i += 2) {
         let divisor = 0;
-        for(let j = 1; j <= i; j++) {
-            if(i % j === 0) {
+        for (let j = 1; j <= i; j++) {
+            if (i % j === 0) {
                 divisor++;
             }
         }
-        if(divisor === 8) {
-            ans++;
-        }
+        if (divisor === 8) ans++;
     }
     console.log(ans);
 }
@@ -29,7 +27,7 @@ try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
 } catch (error1) {
     try {
-    main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
+        main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
     } catch (error2) {
         console.log('error2', error2);
         console.log('----------------------------');

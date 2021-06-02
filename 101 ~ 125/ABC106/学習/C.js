@@ -9,10 +9,10 @@ function main(input) {
     const s = input[0].split('').map(n => parseInt(n, 10));
     const k = parseInt(input[1], 10);
     //* -----------------------------
-    for(let i = 0; i < k; i++) {
+    for (let i = 0; i < k; i++) {
         //* 初めて1ではない数字が、そのまま答え
         //* 2~9^5000兆は、数え上げられない
-        if(s[i] !== 1) {
+        if (s[i] !== 1) {
             console.log(s[i]);
             return;
         }
