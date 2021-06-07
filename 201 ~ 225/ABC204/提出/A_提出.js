@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 204
+//*   ABC 204 A - Rock-paper-scissors 
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

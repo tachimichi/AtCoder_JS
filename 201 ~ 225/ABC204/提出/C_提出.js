@@ -1,45 +1,56 @@
 // TODO
-//*   ABC 203 C - Friends and Travel costs
+//*   ABC 204 C - Tour
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    let [n, k] = input[0].trim().split(' ').map(n => parseInt(n, 10));
+    const [n, m] = input[0].trim().split(' ').map(n => parseInt(n, 10));
 
-    let arr = [];
-    for (let i = 1; i <= n; i++) {
-        const [a, b] = input[i].trim().split(' ').map(n => parseInt(n, 10));
-        arr.push([a, b]);
+    const cities = Array(n).fill().map(_ => Array()); //* 隣接リスト
+    // console.log(cities);
+
+    for (let i = 1; i <= m; i++) {
+        let [a, b] = input[i].trim().split(' ').map(n => parseInt(n, 10));
+        a--, b--;
+        cities[a].push(b);
+        // e[a - 1].push(b - 1);
     }
-    // console.log(arr);
-    arr.sort((a, b) => a[0] - b[0]);
-    // console.log(arr);
+    // console.log(cities);
 
-    //* 前提：Bigintを使用するのは、10^15以上である
-    //* しかし、制約上、最大値は
-    //* k <= 10^9, b <=10^9, n <= 2*10^5
-    //* 2*10^5(n) * 10^9(b) + 10^9(k) <= 10^15
-    //* ⇒64bit整数で収まる（BigIntは使用しない）
-
-    //* 解法：
-    //* k >= 村[i]である場合
-    //*     k += 金[i]円
-    //* k < 村[i] である場合
-    //*     終了
-
-    console.log("k", k);
+    //* ----------------------------------
+    let ans = 0;
     for (let i = 0; i < n; i++) {
-        if (arr[i][0] <= k) {
-            k += arr[i][1];
-        } else {
-            break;
+        const visited = new Set();
+        //* 始点
+        const stack = [cities[i]];
+        visited.add(i);
+        console.log("visited", visited);
+        console.log("stack", stack);
+        console.log("----------");
+
+        while (stack.length) {
+            const city = stack.pop();
+            // console.log(city);
+
+            for (let j = 0; j < city.length; j++) {
+                const next = city[j];
+                if (visited.has(next)) {
+                    continue;
+                } else {
+                    stack.push(cities[next]);
+                    visited.add(next);
+                }
+            }
         }
-        console.log("k", k);
+        console.log("ans", ans);
+        console.log("----------------------");
+        ans += visited.size;
     }
-    console.log(k);
+    console.log(ans);
 
 }
+
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
