@@ -7,49 +7,48 @@ function main(input) {
     input = input.trim().split('\n');
     const [n, m] = input[0].trim().split(' ').map(n => parseInt(n, 10));
 
-    const cities = Array(n).fill().map(_ => Array()); //* 隣接リスト
-    // console.log(cities);
+    const lists = Array(n).fill().map(_ => Array()); //* 隣接リスト
 
     for (let i = 1; i <= m; i++) {
         let [a, b] = input[i].trim().split(' ').map(n => parseInt(n, 10));
+        //* 最小の地点を0に設定する方が便利
         a--, b--;
-        cities[a].push(b);
+        lists[a].push(b);
         // e[a - 1].push(b - 1);
     }
-    // console.log(cities);
 
+    console.log(lists);
     //* ----------------------------------
+
     let ans = 0;
+    let used;
     for (let i = 0; i < n; i++) {
-        const visited = new Set();
-        //* 始点
-        const stack = [cities[i]];
-        visited.add(i);
-        console.log("visited", visited);
-        console.log("stack", stack);
-        console.log("----------");
+        //* スタート地点が変わるたびに、リセットすること
+        used = new Array(n).fill(false);
+        //* スタート地点はtrueにする
+        used[i] = true;
 
-        while (stack.length) {
-            const city = stack.pop();
-            // console.log(city);
+        let q = [];
+        q.push(i);
 
-            for (let j = 0; j < city.length; j++) {
-                const next = city[j];
-                if (visited.has(next)) {
-                    continue;
-                } else {
-                    stack.push(cities[next]);
-                    visited.add(next);
+        // console.log(q);
+        // console.log(q.length);
+
+        while (q.length > 0) {
+            let v = q.shift();
+            ans++;
+
+            lists[v].forEach(w => {
+                if (used[w] != true) {
+                    used[w] = true;
+                    q.push(w);
                 }
-            }
+            });
         }
-        console.log("ans", ans);
-        console.log("----------------------");
-        ans += visited.size;
     }
     console.log(ans);
-
 }
+
 
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
