@@ -1,25 +1,24 @@
 // TODO
-//*   ABC 126 C - Dice and Coin
+//*   ABC 100 C - *3 or /2
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const [n, k] = input.trim().split(' ').map(n => parseInt(n, 10));
+    input = input.trim().split('\n');
+    const n = parseInt(input[0], 10);
+    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
 
-    let t = 0;
-    for(let i = 1;  i <= n; i++) {
-        let kakuritsu = 1/n;
-        let now = i;
-        while(now < k) {
-            now *= 2;
-            kakuritsu /= 2;
-            // console.log(now);
+    //* 解法：
+    //* *3 or /2 を選択する必要があるが、*3は関係ない
+    //* a[i]の/2の回数を最大まで求めていく
+    let sum = 0;
+    for (let i = 0; i < a.length; i++) {
+        while (a[i] % 2 == 0) {
+            a[i] /= 2;
+            sum++;
         }
-        // console.log(kakuritsu);
-        t += kakuritsu;
     }
-    console.log(t);
-
+    console.log(sum);
 }
 
 
@@ -28,7 +27,7 @@ try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
 } catch (error1) {
     try {
-    main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
+        main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
     } catch (error2) {
         console.log('error2', error2);
         console.log('----------------------------');
