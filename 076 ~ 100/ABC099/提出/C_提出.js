@@ -1,24 +1,50 @@
 // TODO
-//*   ABC 100 C - *3 or /2
+//*   ABC 099 C - Strange Bank
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
+    let n = parseInt(input, 10);
+    const dp = [...Array(n + 1).fill(null)].map((_, i) => i);
+    //* 連続した値の配列（隣接リストの応用）
+    const dpdp = new Array(n + 1).fill().map((_, i) => i);
 
-    //* 解法：
-    //* *3 or /2 を選択する必要があるが、*3は関係ない
-    //* a[i]の/2の回数を最大まで求めていく
-    let sum = 0;
-    for (let i = 0; i < a.length; i++) {
-        while (a[i] % 2 == 0) {
-            a[i] /= 2;
-            sum++;
+    // console.log(dp);
+    // console.log(dpdp);
+
+    for (let i = 0; i < n; i++) {
+        let j = 0;
+        let num = 0;
+        while (i + num <= n) {
+            j++;
+            num = 6 ** j;
+            //* ストップ条件を明示
+            if (i + num <= n) {
+                dp[i + num] = Math.min(dp[i + num], dp[i] + 1);
+            } else {
+                break;
+            }
         }
+
+        j = 0;
+        num = 0;
+        while (i + num <= n) {
+            j++;
+            num = 9 ** j;
+            //* ストップ条件を明示
+            if (i + num <= n) {
+                dp[i + num] = Math.min(dp[i + num], dp[i] + 1);
+            } else {
+                break;
+            }
+        }
+
+        // console.log(dp);
+        // console.log("-------");
     }
-    console.log(sum);
+    // console.log(dp);
+
+    console.log(dp[n]);
 }
 
 

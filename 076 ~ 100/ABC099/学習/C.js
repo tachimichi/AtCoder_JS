@@ -5,48 +5,46 @@
 function main(input) {
     'use strict';
     let n = parseInt(input, 10);
+    const dp = [...Array(n + 1).fill(null)].map((_, i) => i);
+    //* 連続した値の配列（隣接リストの応用）
+    const dpdp = new Array(n + 1).fill().map((_, i) => i);
 
-    let count = 0;
-    let a = 0;
-    while (9 ** a <= n) {
-        a++;
+    // console.log(dp);
+    // console.log(dpdp);
+
+    for (let i = 0; i < n; i++) {
+        let j = 0;
+        let num = 0;
+        while (i + num <= n) {
+            j++;
+            num = 6 ** j;
+            //* ストップ条件を明示
+            if (i + num <= n) {
+                dp[i + num] = Math.min(dp[i + num], dp[i] + 1);
+            } else {
+                break;
+            }
+        }
+
+        j = 0;
+        num = 0;
+        while (i + num <= n) {
+            j++;
+            num = 9 ** j;
+            //* ストップ条件を明示
+            if (i + num <= n) {
+                dp[i + num] = Math.min(dp[i + num], dp[i] + 1);
+            } else {
+                break;
+            }
+        }
+
+        // console.log(dp);
+        // console.log("-------");
     }
-    n -= 9 ** (a - 1);
-    console.log(9 ** (a - 1));
-    console.log(9 ** (a));
-    count++;
-    console.log("count", count);
-    console.log(n);
+    // console.log(dp);
 
-    a = 0;
-    while (6 ** a <= n) {
-        a++;
-    }
-    n -= 6 ** (a - 1);
-    console.log(6 ** (a - 1));
-    console.log(6 ** (a));
-
-    count++;
-    console.log("count", count);
-    console.log(n);
-
-    a = 0;
-    while (9 * a <= n) {
-        a++;
-        count++;
-    }
-    count--;
-    console.log("count", count);
-    n -= 9 * (a - 1);
-    console.log(n);
-
-    a = 0;
-    while (1 * a < n) {
-        a++;
-        count++;
-    }
-    console.log("count", count);
-
+    console.log(dp[n]);
 }
 
 
