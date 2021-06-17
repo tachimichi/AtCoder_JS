@@ -7,25 +7,29 @@ function main(input) {
     // let [n, k] = input.trim().split(' ').map(n => parseInt(n, 10));
     let [n, k] = input.trim().split(' ');
 
-    for (let i = 1; i <= k; i++) {
-        //* nを8進法として受け取る
-        //* 9進法として変換
-        //* 数字の8を5へ書き直す
-        //* 連結
+    //* 解法
+    //* nを8進法として受け取る
+    //? 0b(2進数) や 0o(8進数)、0x(16進数)を接頭辞として付ける
+    //* 9進法として変換
+    //* 数字の8を5へ書き直す
+    //* 連結
 
-        // console.log(n);
-        n = parseInt(n, 8);
+    for (let i = 1; i <= k; i++) {
+
+        // console.log(n); // 10進数
+
+        //* '0o'を先頭に付けると8進数として認識する
+        n = '0o' + n;
         n = BigInt(n);
-        // console.log(n);
+        // console.log(n); // 8進数
+
         n = n.toString(9).split('');
-        // console.log(n);
+        // console.log(n); // 9進数
 
         for (let j = 0; j < n.length; j++) {
             if (n[j] == "8") n[j] = "5";
         }
-        // console.log(n);
         n = n.join('');
-        // console.log(n);
     }
     //* ループは9進法で終了しているため、8進法で出力
     console.log(n.toString(8));
