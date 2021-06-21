@@ -1,5 +1,5 @@
 // TODO
-//*   001 - Yokan Party
+//*   003 - Longest Circular Road
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
@@ -12,13 +12,12 @@ function main(input) {
         graph[a - 1].push(b);
         graph[b - 1].push(a);
     }
-    //* 隣接リスト
     const dist = new Array(n + 1).fill(Infinity);
 
     //* 頂点1からの最短距離を求める
     //* maxid1: 頂点1から最も離れている（最短距離が長い）頂点
     getDist(1);
-    console.log(dist);
+    // console.log(dist);
     let maxn1 = -1;
     let maxid1 = -1;
     for (let i = 1; i <= n; i++) {
@@ -27,12 +26,12 @@ function main(input) {
             maxid1 = i;
         }
     }
-    console.log(maxn1, maxid1);
+    // console.log(maxn1, maxid1);
 
     //* 頂点maxid1からの最短距離を求める
     //* maxn2: 木の直径（最短距離の最大値）
     getDist(maxid1);
-    console.log(dist);
+    // console.log(dist);
     let maxn2 = -1;
     for (let i = 1; i <= n; i++) {
         maxn2 = Math.max(maxn2, dist[i]);
@@ -59,8 +58,6 @@ function main(input) {
             });
         }
     }
-
-
 }
 
 
