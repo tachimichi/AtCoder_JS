@@ -1,31 +1,26 @@
 // TODO
-//*   ABC 094 C - Many Medians
+//*   ABC 093 C - Same Integers
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
-    const t = input[1].trim().split(' ').map(n => parseInt(n, 10));
-    t.sort((a, b) => a - b);
-    // console.log(a);
-    // console.log(t);
+    const [a, b, c] = input.trim().split(' ').map(n => parseInt(n, 10));
 
-    const m1 = t[n / 2 - 1];
-    const m2 = t[n / 2];
-    // console.log(m1, m2);
+    const sum = a + b + c;
+    const max = Math.max(a, b, c);
+    const max_3 = max * 3;
 
-    for (let i = 0; i < a.length; i++) {
-        //* a[i]が半分より左側なら
-        if (a[i] <= m1) {
-            //* n/2番目が中央値となる
-            console.log(m2);
-        } else {
-            //* 右側なら、n/2-1番目が中央値となる
-            console.log(m1);
-        }
+    let ans = 0;
+    //* max_3と、sumの偶奇が等しいかどうか
+    if (max_3 % 2 == sum % 2) {
+        //* 3 つの整数が等しくなった時の値は max以上
+        ans = (max_3 - sum) / 2;
+    } else {
+        //* 3 つの整数が等しくなった時の値は max + 1以上
+        ans = (max_3 + 3 - sum) / 2;
     }
+    console.log(ans);
+
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）

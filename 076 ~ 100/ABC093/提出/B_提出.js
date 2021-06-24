@@ -1,22 +1,26 @@
 // TODO
-//*   ABC 094 B - Toll Gates 
+//*   ABC 093 B - Small and Large Integers
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const [n, m, x] = input[0].trim().split(' ').map(n => parseInt(n, 10));
-    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
+    const [a, b, k] = input.trim().split(' ').map(n => parseInt(n, 10));
 
-    let count1 = 0;
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] > x) break;
-        count1++;
+    let t = [];
+    for (let i = a; i < a + k; i++) {
+        if (i <= b) t.push(i);
     }
-    let count2 = m - count1;
-    console.log(Math.min(count1, count2));
-}
+    for (let i = b - k + 1; i <= b; i++) {
+        if (a <= i) t.push(i);
+    }
+    // console.log(t);
+    const ans = new Set(t);
 
+    //* Setクラスは、forEachで出力
+    ans.forEach(element => {
+        console.log(element);
+    });
+}
 
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
