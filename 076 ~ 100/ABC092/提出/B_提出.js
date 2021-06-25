@@ -19,7 +19,7 @@ function main(input) {
         let j = 0;
         while (t[i] * j + 1 <= d) {
             count++;
-            j++;
+            j += 1;
         }
     }
     console.log(count);
