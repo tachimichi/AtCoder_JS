@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 209
+//*   ABC 209 B - Savings
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
