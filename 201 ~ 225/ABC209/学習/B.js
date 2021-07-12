@@ -8,7 +8,6 @@ function main(input) {
     let [n, x] = input[0].trim().split(' ').map(n => parseInt(n, 10));
     let a = input[1].trim().split(' ').map(n => parseInt(n, 10));
 
-    let ans = "Yes";
     for (let i = 0; i < n; i++) {
         if (i % 2 == 1) {
             a[i] -= 1;
