@@ -10,17 +10,18 @@ function main(input) {
     let x = 1;
     for (let i = 1; i <= 10; i++) {
         x *= i;
+        console.log(x);
     }
     let ans = 0;
     for (let i = 10; i > 0; i--) {
         //* floor(p / x) で、1以上⇒pの方が大きい時
-        // console.log(Math.floor(p / x));
+        console.log(Math.floor(p / x))
         ans += Math.floor(p / x);
         //* 余りを次の計算用として格納する
         p %= x;
         //* xは、大きいものから支払う
         x = Math.floor(x / i);
-        // console.log("x", x);
+        console.log("x", x);
         // console.log("p", p);
         // console.log("ans", ans);
         // console.log("=================");
