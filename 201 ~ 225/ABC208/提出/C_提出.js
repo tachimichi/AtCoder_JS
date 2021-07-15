@@ -1,42 +1,34 @@
 // TODO
-//*   ABC 207 C - Many Segments
+//*   ABC 208 C - Fair Candy Distribution
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    let s = [];
-    for (let i = 1; i <= n; i++) {
-        let [t, l, r] = input[i].trim().split(' ').map(n => parseInt(n, 10));
-        //* -----------------------
-        if (t == 2) {
-            r -= 0.5;
-        } else if (t == 3) {
-            l += 0.5;
-        } else if (t == 4) {
-            l += 0.5;
-            r -= 0.5;
-        }
-        //* -----------------------
-        s.push([t, l, r]);
-    }
-    // console.log(s);
+    let [n, k] = input[0].trim().split(' ').map(n => BigInt(n));
+    const a = input[1].trim().split(' ').map(n => BigInt(n));
+    //* 全員に分配する数
+    const num = k / n;
+    //* 余り物
+    const mod = k % n;
+    // console.log("mod", mod);
 
-    let ans = 0;
+    let ans = new Array(n).fill(0n);
+    //* ---------------------------------
+    const copy = [...a];
+    //* bigintのソート方法
+    copy.sort((a, b) => (a < b) ? -1 : ((a > b) ? 1 : 0));
+    // console.log(copy);
     for (let i = 0; i < n; i++) {
-        for (let j = i + 1; j < n; j++) {
-            // console.log(i, j);
-            // console.log(s[i][1], s[j][1]);
-            // console.log(s[i][2], s[j][2]);
-            if (Math.max(s[i][1], s[j][1]) <= Math.min(s[i][2], s[j][2])) {
-                // console.log("OK");
-                ans++;
-            }
-            // console.log('-------------');
+        // console.log("a[i]", a[i]);
+        // console.log("copy[mod - 1n]", copy[mod - 1n]);
+        if (a[i] <= copy[mod - 1n]) {
+            ans[i] = num + 1n;
+        } else {
+            ans[i] = num;
         }
     }
-    console.log(ans);
+    console.log(ans.join('\n').toString());
 }
 
 
