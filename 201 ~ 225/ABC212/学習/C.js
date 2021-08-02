@@ -6,7 +6,10 @@ function main(input) {
     'use strict';
     input = input.trim().split('\n');
     const [n, m] = input[0].trim().split(' ').map(n => parseInt(n, 10));
-
+    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
+    const b = input[2].trim().split(' ').map(n => parseInt(n, 10));
+    a.sort((a, b) => a - b);
+    b.sort((a, b) => a - b);
 
 }
 
