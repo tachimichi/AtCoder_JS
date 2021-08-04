@@ -11,6 +11,18 @@ function main(input) {
     a.sort((a, b) => a - b);
     b.sort((a, b) => a - b);
 
+    let x = 0;
+    let y = 0;
+    let ans = 10e8;
+    while ((x < n) && (y < m)) {
+        ans = Math.min(ans, Math.abs(a[x] - b[y]));
+        if (a[x] > b[y]) {
+            y++;
+        } else {
+            x++;
+        }
+    }
+    console.log(ans);
 }
 
 
