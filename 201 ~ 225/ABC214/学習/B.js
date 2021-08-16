@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 213 B - Booby Prize 
+//*   ABC 214 B - How many?
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
