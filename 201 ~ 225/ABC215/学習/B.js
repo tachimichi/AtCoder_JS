@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 215
+//*   ABC 215 B - log2(N)
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
