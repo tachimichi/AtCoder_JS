@@ -17,29 +17,27 @@ function main(input) {
         t.push(a);
         //カウント用
         const list = new Array(w).fill(0);
-        ans.unshift(0);
-        ans.push(0);
+        list.unshift(0);
+        list.push(0);
         ans.push(list);
     }
     const mod = new Array(w + 2).fill('.');
     t.unshift(mod);
     t.push(mod);
-    console.log(t);
 
     const zero = new Array(w + 2).fill(0);
     ans.unshift(zero);
     ans.push(zero);
-    console.log(ans);
     // ---------------------------------------------
 
     for (let i = 1; i < h + 1; i++) {
         for (let j = 1; j < w + 1; j++) {
             if (t[i][j] == '#') {
-                console.log(i, j);
+                // console.log(i, j);
 
                 ans[i - 1][j - 1]++;
-                ans[i][j - 1]++;
-                ans[i + 1][j - 1]++;
+                ans[i - 1][j]++;
+                ans[i - 1][j + 1]++;
                 ans[i][j - 1]++;
                 ans[i][j + 1]++;
                 ans[i + 1][j - 1]++;
@@ -48,7 +46,20 @@ function main(input) {
             }
         }
     }
-    console.log(ans);
+    for (let i = 1; i < h + 1; i++) {
+        for (let j = 1; j < w + 1; j++) {
+            if (t[i][j] == '#') {
+                ans[i][j] = '#';
+            }
+        }
+    }
+    ans.shift();
+    ans.pop();
+    for (let i = 0; i < ans.length; i++) {
+        ans[i].shift();
+        ans[i].pop();
+        console.log(ans[i].join(''));
+    }
 
 }
 
