@@ -1,17 +1,19 @@
 // TODO
-//*   ABC 215
+//*   ABC 216 A - Signed Difficulty
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    // input = input.trim().split('\n');
-    const n = input.trim();
-    if (n === 'Hello,World!') {
-        console.log('AC');
+    const [x, y] = input.trim().split('.').map(n => parseInt(n, 10));
+    if (0 <= y && y <= 2) {
+        console.log(x + '-');
+    } else if (3 <= y && y <= 6) {
+        console.log(x);
     } else {
-        console.log('WA');
+        console.log(x + '+');
     }
 }
+
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
