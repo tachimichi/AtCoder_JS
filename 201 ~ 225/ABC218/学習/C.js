@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 218 
+//*   ABC 218 C - Shapes
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

@@ -1,20 +1,24 @@
 // TODO
-//*   ABC 217 C - Inverse of Permutation
+//*   ABC 218 C - Shapes
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
     const n = parseInt(input[0], 10);
-    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
-
-    let t = new Array(n).fill(0);
-    for (let i = 0; i < n; i++) {
-        t[a[i] - 1] = i + 1;
+    let s = [];
+    for (let i = 1; i <= n; i++) {
+        const x = input[i].trim().split('');
+        s.push(x);
     }
-    for (let i = 0; i < n; i++) {
-        console.log(t[i]);
+    console.log(s);
+    //--------------------------
+    let t = [];
+    for (let i = n + 1; i <= 2 * n; i++) {
+        const x = input[i].trim().split('');
+        t.push(x);
     }
+    console.log(t);
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
