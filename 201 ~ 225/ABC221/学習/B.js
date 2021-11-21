@@ -16,6 +16,7 @@ function main(input) {
     let isOK = true;
     for (let i = 0; i < a.length; i++) {
         if (a[i] != b[i]) {
+            // console.log(a[i], b[i]);
             isOK = false;
         }
     }
@@ -29,7 +30,7 @@ function main(input) {
         a[i] = a[i + 1];
         a[i + 1] = t;
 
-        console.log(a);
+        // console.log(a);
         for (let j = 0; j < a.length; j++) {
             if (a[j] != b[j]) {
                 isOK = false;
@@ -37,12 +38,12 @@ function main(input) {
                 count++;
             }
             // console.log('count', count);
+        }
 
-            if (count == a.length) {
-                return console.log('Yes');
-            } else {
-                a = s;
-            }
+        if (count == a.length) {
+            return console.log('Yes');
+        } else {
+            a = s;
         }
     }
     console.log('No');
