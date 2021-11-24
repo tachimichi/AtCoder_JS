@@ -10,40 +10,47 @@ function main(input) {
     let b = input[1].trim().split('');
 
     // console.log(a);
+    // console.log(s);
     // console.log(b);
+    // console.log(a.length);
 
     let isOK = true;
     for (let i = 0; i < a.length; i++) {
-        if (a[i] != b[i]) {
-            // console.log(a[i], b[i]);
+        if (a[i] !== b[i]) {
             isOK = false;
         }
+        if (isOK == false) break;
     }
     if (isOK) return console.log('Yes');
 
     //* --------------------------------------
     for (let i = 0; i < a.length - 1; i++) {
-        let count = 0;
 
+        let count = 0;
+        //* ただの=だと、値渡しとなり元の配列も変更の影響を受ける
+        //https://qiita.com/takahiro_itazuri/items/882d019f1d8215d1cb67
+        a = s.concat();
+
+        // 文字列の入れ替え
         let t = a[i];
         a[i] = a[i + 1];
         a[i + 1] = t;
 
-        // console.log(a);
+        //* ---------------------------------------
+        // 文字列の比較検証
         for (let j = 0; j < a.length; j++) {
-            if (a[j] != b[j]) {
+            if (a[j] !== b[j]) {
                 isOK = false;
             } else {
                 count++;
             }
-            // console.log('count', count);
-        }
 
-        if (count == a.length) {
-            return console.log('Yes');
-        } else {
-            a = s;
+            if (count == a.length) {
+                // console.log('count', count);
+                return console.log('Yes');
+            }
         }
+        // console.log('count' + i, count);
     }
     console.log('No');
 }
