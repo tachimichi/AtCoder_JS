@@ -5,7 +5,6 @@
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const k = parseInt(input[0].trim(), 10);
     let a = input[0].trim().split('');
     let s = input[0].trim().split('');
     let b = input[1].trim().split('');
