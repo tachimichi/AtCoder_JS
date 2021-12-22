@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 222 B - Failing Grade
+//*   ABC 224 B - Mongeness
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
