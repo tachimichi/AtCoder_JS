@@ -1,28 +1,24 @@
 // TODO
-//*   ABC 227 B - KEYENCE building
+//*   ABC 229 B - Hard Calculation
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    const s = input[1].trim().split(' ').map(n => parseInt(n, 10));
-    // console.log(s);
-    let areaSet = new Set();
-    for (let i = 0; i < n; i++) {
-        for (let a = 1; a <= s[i] - 1; a++) {
-            for (let b = 1; b < s[i] - a; b++) {
-                let x = 4 * a * b + 3 * (a + b);
-                if (x == s[i]) {
-                    areaSet.add(x);
-                }
-            }
+    let [a, b] = input.trim().split(' ');
+    // console.log(a, b);
+    a = a.split('').reverse();
+    b = b.split('').reverse();
+
+    let isHard = false;
+    for (let i = 0; i < Math.min(a.length, b.length); i++) {
+        let n = parseInt(a[i], 10) + parseInt(b[i], 10);
+        // console.log(n);
+        if (n >= 10) {
+            isHard = true;
+            break;
         }
     }
-    // console.log(areaSet);
-    // 除外処理（特定の値がセット内に存在するか）
-    const ans = s.filter(element => !areaSet.has(element));
-    console.log(ans.length);
+    console.log(isHard ? "Hard" : "Easy");
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
