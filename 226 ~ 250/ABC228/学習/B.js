@@ -1,28 +1,31 @@
 // TODO
-//*   ABC 227 B - KEYENCE building
+//*   ABC 228 B - Takahashi's Secret
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    const s = input[1].trim().split(' ').map(n => parseInt(n, 10));
-    // console.log(s);
-    let areaSet = new Set();
-    for (let i = 0; i < n; i++) {
-        for (let a = 1; a <= s[i] - 1; a++) {
-            for (let b = 1; b < s[i] - a; b++) {
-                let x = 4 * a * b + 3 * (a + b);
-                if (x == s[i]) {
-                    areaSet.add(x);
-                }
-            }
-        }
+    const [n, x] = input[0].trim().split(' ').map(n => parseInt(n, 10));
+    const a = input[1].trim().split(' ').map(n => parseInt(n, 10));
+
+    let array = new Array(n).fill(0);
+
+    // x番目の要素からスタート
+    let cnt = x - 1;
+
+    // 配列[カウント]目が0ならループする
+    while (array[cnt] == 0) {
+        // 1にする
+        array[cnt] = 1;
+        // 次の広める人の要素数をcntに求める
+        cnt = a[cnt] - 1;
     }
-    // console.log(areaSet);
-    // 除外処理（特定の値がセット内に存在するか）
-    const ans = s.filter(element => !areaSet.has(element));
-    console.log(ans.length);
+
+    let ans = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] == 1) ans++;
+    }
+    console.log(ans);
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
