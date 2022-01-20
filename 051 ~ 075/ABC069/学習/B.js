@@ -1,0 +1,14 @@
+// TODO
+//*   ABC 069 B - i18n
+
+// 関数mainに標準入力をinputとして受け取る
+function main(input) {
+    'use strict';
+    let str = input.trim().split('');
+    const first = str.shift();
+    const last = str.pop();
+    console.log(first + str.length + last);
+}
+
+//*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
+main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
