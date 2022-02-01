@@ -1,20 +1,22 @@
 // TODO
-//*   ABC 067 B - Snake Toy
+//*   ABC 066 B - ss
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split(' ').map(n => parseInt(n, 10));
-    const [n, k] = input[0].trim().split(' ').map(n => parseInt(n, 10));
-    const l = input[1].trim().split(' ').map(n => parseInt(n, 10));
-    l.sort((a, b) => b - a);
-
-    let sum = 0;
-    for (let i = 0; i < k; i++) {
-        sum += l[i];
+    const a = input.trim();
+    let max = 0;
+    for (let i = 0; i < a.length; i += 2) {
+        // https://www.sejuku.net/blog/21155
+        // str.substr( 開始位置, 文字数 );
+        let first = a.substr(0, i / 2);
+        let second = a.substr(i / 2, i / 2);
+        // console.log(first, second);
+        if (first == second) {
+            max = Math.max(max, i);
+        }
     }
-    console.log(sum);
-
+    console.log(max);
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
