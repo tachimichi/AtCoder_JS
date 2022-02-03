@@ -1,19 +1,21 @@
 // TODO
-//*   ABC 062 B - Picture Frame
+//*   ABC 061 B - Counting Roads
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const [h, w] = input[0].trim().split(' ').map(n => parseInt(n, 10));
-    let ans = [];
-    let str = '#'.repeat(w + 2);
-    ans.push(str);
-    for (let i = 1; i <= h; i++) {
-        ans.push('#' + input[i].trim() + '#');
+    const [n, m] = input[0].trim().split(' ').map(n => parseInt(n, 10));
+
+    const count = new Array(n).fill(0);
+    for (let i = 1; i <= m; i++) {
+        const [a, b] = input[i].trim().split(' ').map(n => parseInt(n, 10));
+        count[a - 1]++;
+        count[b - 1]++;
     }
-    ans.push(str);
-    console.log(ans.join('\n'));
+    for (let i = 0; i < count.length; i++) {
+        console.log(count[i]);
+    }
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
