@@ -9,7 +9,7 @@ function main(input) {
 
     for (let i = 1; i <= b; i++) {
         const mod = a * i % b;
-        console.log(mod);
+        // console.log(mod);
         if (mod == c) {
             isOK = true;
             break;
