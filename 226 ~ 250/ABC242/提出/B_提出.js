@@ -6,6 +6,7 @@ function main(input) {
     'use strict';
     let str = input.trim().split('');
     // console.log(str);
+    // ソート昇順
     str.sort();
     console.log(str.join(''));
 }
