@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 248 A - Lacked Number
+//*   ABC 249 A - Jogging
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
