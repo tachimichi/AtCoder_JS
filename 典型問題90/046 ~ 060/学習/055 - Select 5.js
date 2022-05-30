@@ -1,8 +1,6 @@
 // TODO
 //*    055 - Select 5
 
-const BigInteger = require("big-integer");
-
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
