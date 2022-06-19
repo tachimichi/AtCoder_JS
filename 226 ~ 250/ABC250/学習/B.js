@@ -4,13 +4,21 @@
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    let [a, b, k] = input.trim().split(' ').map(n => parseInt(n, 10));
-    let count = 0;
-    if (a >= b) return console.log(count);
-    while (true) {
-        count++;
-        a *= k;
-        if (a >= b) return console.log(count);
+    let [n, a, b] = input.trim().split(' ').map(n => parseInt(n, 10));
+    let array = new Array(n * a);
+    for (let i = 0; i < n * a; i++) {
+        array[i] = new Array(n * b).fill('.');
+    }
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].length; j++) {
+            if (i % (a * 2) < a) {
+                if (j % (b * 2) >= b) array[i][j] = '#';
+            } else {
+                if (j % (b * 2) < b) array[i][j] = '#';
+            }
+        }
+        console.log(array[i].join(''));
     }
 }
 
