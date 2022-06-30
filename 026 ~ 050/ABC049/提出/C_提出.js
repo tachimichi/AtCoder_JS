@@ -73,7 +73,7 @@ try {
     main(require('fs').readFileSync('/dev/stdin', 'utf8'));
 } catch (error1) {
     try {
-        main(require('fs').readFileSync('../txt/9_ABC049C.txt', 'utf8'));
+        main(require('fs').readFileSync('../txt/C.txt', 'utf8'));
     } catch (error2) {
         console.log('error2', error2);
         console.log('----------------------------');
