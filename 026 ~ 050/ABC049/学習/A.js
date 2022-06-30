@@ -1,0 +1,13 @@
+// TODO
+//*   ABC 049 A - 居合を終え、青い絵を覆う
+
+// 関数mainに標準入力をinputとして受け取る
+function main(input) {
+    'use strict';
+    const c = input.trim();
+    const aiueo = 'aiueo'.split('');
+    console.log(aiueo.includes(c) ? 'vowel' : 'consonant');
+}
+
+//*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
+main(require('fs').readFileSync('../txt/A.txt', 'utf8'));
